@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <link rel="stylesheet" href="styles.css" />
@@ -9,8 +10,9 @@
       crossorigin="anonymous"
     />
   </head>
+
   <body>
-    <!-- Table Structure -->
+    <!-- the entire body must be written by student -->
     <table class="table table-striped table-hover table-bordered">
       <thead>
         <tr>
@@ -18,67 +20,10 @@
           <th>Time taken (s)</th>
         </tr>
       </thead>
-      <tbody id="output">
-        <!-- Loading Row -->
-        <tr id="loading">
-          <td colspan="2">Loading...</td>
-        </tr>
-      </tbody>
+      <tbody id="output"></tbody>
     </table>
 
-    <script>
-      // Function to create a promise with a random delay between 1 and 3 seconds
-      const createPromise = () => {
-        const randomDelay = (Math.random() * 2 + 1).toFixed(3); // Random delay between 1 and 3 seconds
-        return new Promise((resolve) => {
-          setTimeout(() => {
-            resolve(randomDelay); // Resolve with the delay value
-          }, randomDelay * 1000);
-        });
-      };
-
-      // Create 3 promises
-      const promise1 = createPromise();
-      const promise2 = createPromise();
-      const promise3 = createPromise();
-
-      // Wait for all promises to resolve
-      Promise.all([promise1, promise2, promise3]).then((results) => {
-        const tableBody = document.getElementById("output");
-        const loadingRow = document.getElementById("loading");
-
-        // Remove the loading row
-        loadingRow.remove();
-
-        // Populate the table with resolved values
-        results.forEach((time, index) => {
-          const row = document.createElement("tr");
-          const promiseName = document.createElement("td");
-          const timeTaken = document.createElement("td");
-
-          promiseName.innerText = Promise ${index + 1};
-          timeTaken.innerText = parseInt(time);
-
-          row.append(promiseName, timeTaken);
-          tableBody.append(row);
-        });
-
-        // Calculate the total time (maximum time among all promises)
-        const totalTime = Math.max(...results).toFixed(3);
-
-        // Add the total row
-        const totalRow = document.createElement("tr");
-        const totalName = document.createElement("td");
-        const totalTimeTaken = document.createElement("td");
-
-        totalName.innerText = "Total";
-        totalTimeTaken.innerText = totalTime;
-
-        totalRow.append(totalName, totalTimeTaken);
-        tableBody.append(totalRow);
-      });
-    </script>
-
+    <script type="text/javascript" src="./script.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
